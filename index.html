@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Basanta Pokhrel — Backend Developer. Multi-tenant SaaS APIs, distributed job queues, Node.js, TypeScript, NestJS, Kubernetes."
+    />
+    <title>Basanta Pokhrel | Backend Developer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("selected-theme") === "dark") {
+            document.documentElement.classList.add("dark-theme");
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <!--========== HEADER / BOTTOM NAV ==========-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#home" class="nav__logo">Basanta</a>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">
+                <i class="bx bx-home-alt nav__icon"></i> Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">
+                <i class="bx bx-user nav__icon"></i> About
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#skills" class="nav__link">
+                <i class="bx bx-file nav__icon"></i> Skills
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#services" class="nav__link">
+                <i class="bx bx-briefcase-alt-2 nav__icon"></i> Services
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#portfolio" class="nav__link">
+                <i class="bx bx-layer nav__icon"></i> Portfolio
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">
+                <i class="bx bx-message-square-detail nav__icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="bx bx-x nav__close" id="nav-close"></i>
+        </div>
+
+        <div class="nav__btns">
+          <button
+            type="button"
+            class="change-theme"
+            id="theme-button"
+            aria-label="Toggle night mode"
+            title="Day / Night"
+          >
+            <i class="bx bx-moon theme-icon-moon" aria-hidden="true"></i>
+            <i class="bx bx-sun theme-icon-sun" aria-hidden="true"></i>
+            <span class="theme-label theme-label-night">Night</span>
+            <span class="theme-label theme-label-day">Day</span>
+          </button>
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="bx bx-menu-alt-left"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!--========== HOME ==========-->
+      <section class="home section" id="home">
+        <div class="home__container container grid">
+          <div class="home__content grid">
+            <div class="home__social">
+              <a
+                href="https://www.linkedin.com/in/basanta-pokhrel-83abb628b"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home__social-icon"
+                aria-label="LinkedIn"
+              >
+                <i class="bx bxl-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/basanta1-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home__social-icon"
+                aria-label="GitHub"
+              >
+                <i class="bx bxl-github"></i>
+              </a>
+              <a
+                href="mailto:pokhrelb246@gmail.com"
+                class="home__social-icon"
+                aria-label="Email"
+              >
+                <i class="bx bx-mail-send"></i>
+              </a>
+            </div>
+
+            <div class="home__img">
+              <img
+                src="assets/profile-home.png"
+                alt="Basanta Pokhrel"
+                class="home__blob-img"
+              />
+            </div>
+
+            <div class="home__data">
+              <h3 class="home__greeting">
+                Hello, I'm
+                <img src="assets/hand.svg" alt="" class="home__hand" />
+              </h3>
+              <h1 class="home__title">Basanta Pokhrel</h1>
+              <h3 class="home__subtitle">Backend Developer</h3>
+              <p class="home__description">
+                Scalable production-style systems — multi-tenant SaaS APIs,
+                distributed job queues, and REST services with Node.js,
+                TypeScript, NestJS, and Kubernetes.
+              </p>
+              <a
+                href="https://amzn-s3-jobque.s3.ca-central-1.amazonaws.com/BackendDeveloperResume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button--flex"
+              >
+                Download CV
+                <img src="assets/files.svg" alt="" class="button__icon" />
+              </a>
+            </div>
+          </div>
+
+          <div class="home__scroll">
+            <a href="#about" class="home__scroll-button button--flex">
+              <img src="assets/scroll.svg" alt="" class="home__scroll-mouse" />
+              <span class="home__scroll-name">Scroll Down</span>
+              <i class="bx bx-down-arrow-alt home__scroll-arrow"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--========== ABOUT ==========-->
+      <section class="about section" id="about">
+        <h2 class="section__title">About Me</h2>
+        <span class="section__subtitle">Introduction</span>
+
+        <div class="about__container container grid">
+          <div class="about__visual">
+            <div class="about__orbit" aria-hidden="true">
+              <span class="about__ring about__ring--outer"></span>
+              <span class="about__ring about__ring--inner"></span>
+
+              <!-- Inner ring: backend stack -->
+              <span class="about__tech about__tech--inner" style="--i: 0">Node.js</span>
+              <span class="about__tech about__tech--inner" style="--i: 1">TypeScript</span>
+              <span class="about__tech about__tech--inner" style="--i: 2">NestJS</span>
+              <span class="about__tech about__tech--inner" style="--i: 3">Express</span>
+              <span class="about__tech about__tech--inner" style="--i: 4">PostgreSQL</span>
+              <span class="about__tech about__tech--inner" style="--i: 5">MongoDB</span>
+              <span class="about__tech about__tech--inner" style="--i: 6">Redis</span>
+              <span class="about__tech about__tech--inner" style="--i: 7">BullMQ</span>
+              <span class="about__tech about__tech--inner" style="--i: 8">JWT / RBAC</span>
+              <span class="about__tech about__tech--inner" style="--i: 9">Stripe</span>
+
+              <!-- Outer ring: delivery tools -->
+              <span class="about__tech about__tech--outer" style="--i: 0">Docker</span>
+              <span class="about__tech about__tech--outer" style="--i: 1">Kubernetes</span>
+              <span class="about__tech about__tech--outer" style="--i: 2">Compose</span>
+              <span class="about__tech about__tech--outer" style="--i: 3">GitHub Actions</span>
+              <span class="about__tech about__tech--outer" style="--i: 4">Prometheus</span>
+              <span class="about__tech about__tech--outer" style="--i: 5">Grafana</span>
+              <span class="about__tech about__tech--outer" style="--i: 6">PM2</span>
+              <span class="about__tech about__tech--outer" style="--i: 7">AWS S3</span>
+              <span class="about__tech about__tech--outer" style="--i: 8">GHCR</span>
+              <span class="about__tech about__tech--outer" style="--i: 9">Kustomize</span>
+            </div>
+
+            <div class="about__pixels" id="about-pixels" aria-label="Basanta Pokhrel">
+              <canvas id="about-pixels-canvas" class="about__pixels-canvas"></canvas>
+              <img
+                src="assets/about-photo.png"
+                alt="Basanta Pokhrel"
+                class="about__img-fallback"
+                id="about-photo-source"
+              />
+            </div>
+          </div>
+
+          <div class="about__data">
+            <div class="about__info">
+              <div class="about__box">
+                <i class="bx bx-award about__icon"></i>
+                <h3 class="about__title">Education</h3>
+                <span class="about__subtitle">Diploma · 3.90 GPA</span>
+              </div>
+              <div class="about__box">
+                <i class="bx bx-briefcase-alt about__icon"></i>
+                <h3 class="about__title">Completed</h3>
+                <span class="about__subtitle">3 Backend Projects</span>
+              </div>
+              <div class="about__box">
+                <i class="bx bx-map about__icon"></i>
+                <h3 class="about__title">Based in</h3>
+                <span class="about__subtitle">Toronto, ON</span>
+              </div>
+            </div>
+
+            <p class="about__description">
+              Backend developer specializing in scalable, production-style
+              systems — multi-tenant SaaS APIs, distributed job queues, and REST
+              services with Node.js, TypeScript, NestJS, Express, Redis,
+              PostgreSQL, and MongoDB. Strong focus on security (JWT/RBAC),
+              observability (Prometheus/Grafana), and CI/CD. I take systems from
+              API and worker design through Docker Compose and Kubernetes
+              (Minikube) with documented, cloud-ready deployment manifests.
+            </p>
+
+            <a href="#contact" class="button button--flex">
+              Contact Me
+              <img src="assets/send.svg" alt="" class="button__icon" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--========== SKILLS ==========-->
+      <section class="skills section" id="skills">
+        <h2 class="section__title">Skills</h2>
+        <span class="section__subtitle"
+          >From resume, GitHub, and completed projects</span
+        >
+
+        <div class="skills__container container">
+          <!-- Row 1 -->
+          <div class="skills__group">
+            <h3 class="skills__group-title">Languages &amp; Runtime</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">JavaScript</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">TypeScript</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Node.js</h3>
+                <span class="skills__number">95%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 95%"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Backend &amp; APIs</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">NestJS</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Express.js</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">REST APIs</h3>
+                <span class="skills__number">95%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 95%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">JWT / RBAC / Multi-Tenant</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Swagger / OpenAPI</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">Data &amp; Caching</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">PostgreSQL</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">TypeORM</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">MongoDB / Mongoose</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Redis</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="skills__group">
+            <h3 class="skills__group-title">Distributed Systems</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">BullMQ / Job Queues</h3>
+                <span class="skills__number">90%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 90%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Workers</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Workflow Orchestration</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">ETL / Media / ML Processing</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">DevOps &amp; Observability</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Docker / Docker Compose</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Kubernetes / Minikube / Kustomize</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">HPA / KEDA Scaling</h3>
+                <span class="skills__number">75%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 75%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Prometheus / Grafana</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">GitHub Actions / GHCR / PM2</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">AWS S3</h3>
+                <span class="skills__number">75%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 75%"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__group">
+            <h3 class="skills__group-title">SaaS, Security &amp; Testing</h3>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Stripe Billing / Webhooks</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">TOTP 2FA / Helmet / Rate Limits</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Email / Audit Logs / KPI Analytics</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Jest / Supertest</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Unit &amp; Integration Testing</h3>
+                <span class="skills__number">80%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 80%"></span>
+              </div>
+            </div>
+            <div class="skills__data">
+              <div class="skills__titles">
+                <h3 class="skills__name">Postman / API Collections</h3>
+                <span class="skills__number">85%</span>
+              </div>
+              <div class="skills__bar">
+                <span class="skills__percentage" style="width: 85%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--========== QUALIFICATION ==========-->
+      <section class="qualification section" id="qualification">
+        <h2 class="section__title">Qualification</h2>
+        <span class="section__subtitle">Education &amp; project journey</span>
+
+        <div class="qualification__container container">
+          <div class="qualification__tabs">
+            <div
+              class="qualification__button button--flex qualification__active"
+              data-target="#education"
+            >
+              <i class="bx bxs-graduation qualification__icon"></i>
+              Education
+            </div>
+            <div
+              class="qualification__button button--flex"
+              data-target="#experience"
+            >
+              <i class="bx bx-briefcase-alt-2 qualification__icon"></i>
+              Journey
+            </div>
+          </div>
+
+          <div class="qualification__sections">
+            <div
+              class="qualification__content qualification__active"
+              data-content
+              id="education"
+            >
+              <div class="qualification__data">
+                <div>
+                  <h3 class="qualification__title">Computer Programming</h3>
+                  <span class="qualification__subtitle"
+                    >Georgian College, ON · Diploma · 3.90 GPA</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> 2023 — April 2025
+                  </div>
+                </div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div></div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                </div>
+                <div>
+                  <h3 class="qualification__title">Self-Directed Backend Path</h3>
+                  <span class="qualification__subtitle"
+                    >YouTube · CRUD · production-style systems</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> May 2025 — Present
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qualification__content" data-content id="experience">
+              <div class="qualification__data">
+                <div>
+                  <h3 class="qualification__title">Started Programming</h3>
+                  <span class="qualification__subtitle"
+                    >Computer Programming diploma pathway</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> 2023
+                  </div>
+                </div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div></div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+                <div>
+                  <h3 class="qualification__title">Diploma Completed</h3>
+                  <span class="qualification__subtitle"
+                    >Georgian College · then self-learning via YouTube, basics &amp;
+                    CRUD apps</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> April 2025
+                  </div>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div>
+                  <h3 class="qualification__title">Job Board API</h3>
+                  <span class="qualification__subtitle"
+                    >Express · MongoDB · JWT · recruiter/seeker RBAC — completed</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> Mid 2025
+                  </div>
+                </div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div></div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+                <div>
+                  <h3 class="qualification__title">AccessPro RBAC</h3>
+                  <span class="qualification__subtitle"
+                    >Multi-tenant SaaS · Stripe · 2FA · started Aug 2025, completed
+                    early 2026</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> Aug 2025 — Jan 2026
+                  </div>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div>
+                  <h3 class="qualification__title">Orchestrate</h3>
+                  <span class="qualification__subtitle"
+                    >Distributed job queue · NestJS · BullMQ · K8s — completed</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> Jan 2026 — June 2026
+                  </div>
+                </div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div></div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+                <div>
+                  <h3 class="qualification__title">ProjectForge</h3>
+                  <span class="qualification__subtitle"
+                    >Evolving Orchestrate into an agent-capable runtime</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> 2026 — In progress
+                  </div>
+                </div>
+              </div>
+
+              <div class="qualification__data">
+                <div>
+                  <h3 class="qualification__title">Gov Service Platform</h3>
+                  <span class="qualification__subtitle"
+                    >Planned civic / citizen-services platform for Nepal</span
+                  >
+                  <div class="qualification__calendar">
+                    <i class="bx bx-calendar"></i> Planned
+                  </div>
+                </div>
+                <div>
+                  <span class="qualification__rounder"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--========== SERVICES ==========-->
+      <section class="services section" id="services">
+        <h2 class="section__title">Services</h2>
+        <span class="section__subtitle">What I can build for you</span>
+
+        <div class="services__container container grid">
+          <div class="services__content">
+            <div>
+              <i class="bx bx-buildings services__icon"></i>
+              <h3 class="services__title">
+                Multi-Tenant <br />
+                SaaS APIs
+              </h3>
+            </div>
+            <span class="services__button" data-modal="services-modal-1">
+              View More
+              <i class="bx bx-right-arrow-alt services__button-icon"></i>
+            </span>
+            <div class="services__modal" id="services-modal-1">
+              <div class="services__modal-content">
+                <i class="bx bx-x services__modal-close"></i>
+                <h3 class="services__modal-title">Multi-Tenant SaaS APIs</h3>
+                <p class="services__modal-description">
+                  Production-minded REST backends with tenant isolation, roles,
+                  billing, and documentation — the same patterns used in AccessPro.
+                </p>
+                <ul class="services__modal-services grid">
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Tenant resolution (header / subdomain) with cross-tenant
+                      guards
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Owner / admin / employee RBAC with permission middleware
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      User lifecycle: registration, invites, soft-delete / restore
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Stripe plans, Checkout, webhooks, refunds, plan-gated features
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Swagger / OpenAPI docs and Postman collections
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="services__content">
+            <div>
+              <i class="bx bx-git-branch services__icon"></i>
+              <h3 class="services__title">
+                Job Queues <br />
+                &amp; Workers
+              </h3>
+            </div>
+            <span class="services__button" data-modal="services-modal-2">
+              View More
+              <i class="bx bx-right-arrow-alt services__button-icon"></i>
+            </span>
+            <div class="services__modal" id="services-modal-2">
+              <div class="services__modal-content">
+                <i class="bx bx-x services__modal-close"></i>
+                <h3 class="services__modal-title">Job Queues &amp; Workers</h3>
+                <p class="services__modal-description">
+                  Distributed processing like Orchestrate — API submits work;
+                  specialized workers execute; PostgreSQL and Redis keep state
+                  reliable.
+                </p>
+                <ul class="services__modal-services grid">
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      NestJS monorepo: API, workers, and shared packages
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      BullMQ priorities, delayed/cron jobs, retries, DLQ
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Specialized workers: media, report/PDF, ML/OCR, email, ETL
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Job chaining, dependency graphs, failure propagation
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Tenant concurrency limits and worker autoscaling patterns
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="services__content">
+            <div>
+              <i class="bx bx-shield-quarter services__icon"></i>
+              <h3 class="services__title">
+                Auth, Security <br />
+                &amp; Hardening
+              </h3>
+            </div>
+            <span class="services__button" data-modal="services-modal-3">
+              View More
+              <i class="bx bx-right-arrow-alt services__button-icon"></i>
+            </span>
+            <div class="services__modal" id="services-modal-3">
+              <div class="services__modal-content">
+                <i class="bx bx-x services__modal-close"></i>
+                <h3 class="services__modal-title">Auth, Security &amp; Hardening</h3>
+                <p class="services__modal-description">
+                  Security patterns proven across Job Board API, AccessPro, and
+                  Orchestrate — from JWT sessions to 2FA and rate limits.
+                </p>
+                <ul class="services__modal-services grid">
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      JWT access / refresh tokens and token blacklist on logout
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      TOTP 2FA for owner / admin accounts
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      bcrypt hashing, password policy, account lockout
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Helmet, CORS, and tiered rate limits (global + tenant + auth)
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Role-based job/resource ownership checks
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="services__content">
+            <div>
+              <i class="bx bx-cloud services__icon"></i>
+              <h3 class="services__title">
+                Deploy, CI/CD <br />
+                &amp; Observability
+              </h3>
+            </div>
+            <span class="services__button" data-modal="services-modal-4">
+              View More
+              <i class="bx bx-right-arrow-alt services__button-icon"></i>
+            </span>
+            <div class="services__modal" id="services-modal-4">
+              <div class="services__modal-content">
+                <i class="bx bx-x services__modal-close"></i>
+                <h3 class="services__modal-title">
+                  Deploy, CI/CD &amp; Observability
+                </h3>
+                <p class="services__modal-description">
+                  From local Compose to Minikube Kubernetes, with metrics, tests,
+                  and automated pipelines ready for cloud deploy.
+                </p>
+                <ul class="services__modal-services grid">
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Docker Compose stacks for API, DB, Redis, and workers
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Kubernetes via Kustomize, HPA, optional KEDA queue scaling
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      Prometheus metrics + Grafana dashboards
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      GitHub Actions CI, GHCR images, Jest / Supertest suites
+                    </p>
+                  </li>
+                  <li class="services__modal-service">
+                    <i class="bx bx-check-circle services__modal-icon"></i>
+                    <p class="services__modal-info">
+                      PM2 production process management and AWS S3 outputs
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--========== PORTFOLIO / WORK ==========-->
+      <section class="work section" id="portfolio">
+        <h2 class="section__title">Portfolio</h2>
+        <span class="section__subtitle"
+          >3 completed systems · next evolution &amp; planned work</span
+        >
+
+        <article class="pin-card pin-primary mix systems container">
+          <div class="pin-badge-row">
+            <span class="pin-badge">Completed · Flagship</span>
+            <span class="pin-meta">Jan 2026 — June 2026</span>
+          </div>
+          <div class="pin-body">
+            <div class="pin-copy">
+              <p class="pin-kicker">01 — Orchestrate</p>
+              <h3 class="pin-title">Distributed Job Queue &amp; Worker System</h3>
+              <p class="pin-text">
+                NestJS monorepo (<code>api/</code>, <code>workers/</code>,
+                <code>shared/</code>) with Docker Compose and Kubernetes
+                (Kustomize / Minikube). REST APIs for job submit, batch enqueue,
+                scheduling, status tracking, and attempt history. BullMQ with
+                priority bands, delayed/cron jobs, 3-attempt retry with exponential
+                backoff, DLQ observability, and lifecycle persistence across 11
+                PostgreSQL entities.
+              </p>
+              <ul class="pin-highlights">
+                <li>5 workers: Media/FFmpeg, Report/PDF, ML/OCR, Email/SMTP, ETL</li>
+                <li>Workflow chaining, dependency graphs, failure propagation</li>
+                <li>Multi-tenant concurrency + in-process autoscaler (1–50)</li>
+                <li>K8s HPA (API 1–6; media up to 10); optional KEDA</li>
+                <li>JWT + role guards; 18+ Prometheus metrics; GHCR CI</li>
+                <li>Outputs via shared volumes or optional AWS S3</li>
+              </ul>
+              <ul class="pin-tags">
+                <li>NestJS</li>
+                <li>BullMQ</li>
+                <li>PostgreSQL</li>
+                <li>TypeORM</li>
+                <li>Redis</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>Prometheus</li>
+                <li>Grafana</li>
+                <li>GitHub Actions</li>
+                <li>AWS S3</li>
+              </ul>
+              <div class="pin-actions">
+                <a
+                  href="https://github.com/basanta1-github/Orchestrate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="button button--flex"
+                >
+                  View on GitHub
+                  <i class="bx bx-right-arrow-alt button__icon"></i>
+                </a>
+              </div>
+            </div>
+            <aside class="pin-aside">
+              <p class="aside-label">Architecture flow</p>
+              <ol class="arch-flow">
+                <li><strong>Client</strong><span>Dashboard / API clients</span></li>
+                <li><strong>API</strong><span>NestJS · JWT · Admin/User</span></li>
+                <li><strong>Queue</strong><span>Redis · BullMQ bands</span></li>
+                <li><strong>Workers</strong><span>Media · ML · Email · ETL · Report</span></li>
+                <li><strong>Store</strong><span>PostgreSQL · 11 entities</span></li>
+                <li><strong>Observe</strong><span>Prometheus · Grafana</span></li>
+              </ol>
+            </aside>
+          </div>
+        </article>
+
+        <article class="pin-card pin-secondary mix backend container">
+          <div class="pin-badge-row">
+            <span class="pin-badge soft">Completed · Featured</span>
+            <span class="pin-meta">Aug 2025 — Jan 2026</span>
+          </div>
+          <div class="pin-body compact">
+            <div class="pin-copy">
+              <p class="pin-kicker">02 — AccessPro RBAC</p>
+              <h3 class="pin-title">Multi-Tenant SaaS Backend</h3>
+              <p class="pin-text">
+                Multi-tenant SaaS REST API (38+ endpoints) with
+                <code>x-tenant</code>/subdomain resolution, cross-tenant guards,
+                and owner/admin/employee RBAC. JWT access/refresh, TOTP 2FA,
+                token blacklist, account lockout, Helmet/CORS, and tiered rate
+                limits. Stripe Free/Pro/Enterprise billing with signature-verified
+                webhooks. 131 automated tests (~71% coverage) in GitHub Actions;
+                Swagger UI + Postman; PM2 on WSL/Ubuntu.
+              </p>
+              <ul class="pin-tags">
+                <li>Express</li>
+                <li>MongoDB</li>
+                <li>Redis</li>
+                <li>Stripe</li>
+                <li>JWT</li>
+                <li>TOTP 2FA</li>
+                <li>Jest</li>
+                <li>Swagger</li>
+                <li>GitHub Actions</li>
+                <li>PM2</li>
+              </ul>
+              <a
+                href="https://github.com/basanta1-github/accessPro_RBAC_App"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="work__button"
+              >
+                View on GitHub
+                <i class="bx bx-right-arrow-alt work__button-icon"></i>
+              </a>
+            </div>
+            <aside class="pin-aside soft">
+              <p class="aside-label">Highlights</p>
+              <ul class="aside-list">
+                <li>Tenant isolation at API + DB</li>
+                <li>Invite-by-email + Hunter.io checks</li>
+                <li>Projects CRUD with role visibility</li>
+                <li>Audit logs + tenant/platform KPIs</li>
+                <li>Redis cache (10s–600s) + invalidation</li>
+                <li>Plan caps: 5 / 10 / unlimited users</li>
+              </ul>
+            </aside>
+          </div>
+        </article>
+
+        <div class="more-projects-head container">
+          <h3 class="more-title">Also completed · next &amp; planned</h3>
+        </div>
+
+        <div class="work__container container grid">
+          <article class="work__card mix api">
+            <span class="work__index">03</span>
+            <p class="work__category">Completed</p>
+            <h3 class="work__title">Job Board API</h3>
+            <p class="work__description">
+              Express + MongoDB job board with JWT auth, recruiter/seeker RBAC,
+              filters, applications, and Postman-tested endpoints — first full
+              backend built independently after diploma foundations.
+            </p>
+            <ul class="work__tags">
+              <li>Express</li>
+              <li>MongoDB</li>
+              <li>JWT</li>
+              <li>RBAC</li>
+            </ul>
+            <a
+              href="https://github.com/basanta1-github/job_board_api"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="work__button"
+            >
+              View on GitHub
+              <i class="bx bx-right-arrow-alt work__button-icon"></i>
+            </a>
+          </article>
+
+          <article class="work__card mix systems">
+            <span class="work__index">04</span>
+            <p class="work__category">Evolving</p>
+            <h3 class="work__title">ProjectForge</h3>
+            <p class="work__description">
+              Evolving Orchestrate in place into an agent-capable runtime.
+              Existing job-queue and worker functionality stays intact; Orchestrate
+              workers register as the first agents via AgentRegistry.
+            </p>
+            <ul class="work__tags">
+              <li>NestJS</li>
+              <li>Agents</li>
+              <li>BullMQ</li>
+              <li>Orchestrate base</li>
+            </ul>
+            <a href="#contact" class="work__button">
+              In progress <i class="bx bx-right-arrow-alt work__button-icon"></i>
+            </a>
+          </article>
+
+          <article class="work__card mix backend">
+            <span class="work__index">05</span>
+            <p class="work__category">Planned</p>
+            <h3 class="work__title">Gov Service Platform · Nepal</h3>
+            <p class="work__description">
+              Planned government / civic services platform for Nepal — citizen
+              charter and municipal service APIs. Next major product direction
+              after ProjectForge.
+            </p>
+            <ul class="work__tags">
+              <li>Civic APIs</li>
+              <li>Nepal</li>
+              <li>Research</li>
+            </ul>
+            <a href="#contact" class="work__button">
+              Planned <i class="bx bx-right-arrow-alt work__button-icon"></i>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!--========== CONTACT ==========-->
+      <section class="contact section" id="contact">
+        <h2 class="section__title">Contact Me</h2>
+        <span class="section__subtitle">Get in touch</span>
+
+        <div class="contact__container container grid">
+          <div class="contact__content">
+            <h3 class="contact__title">Talk to me</h3>
+
+            <div class="contact__info">
+              <div class="contact__card">
+                <i class="bx bx-mail-send contact__card-icon"></i>
+                <h3 class="contact__card-title">Email</h3>
+                <span class="contact__card-data">pokhrelb246@gmail.com</span>
+                <a
+                  href="mailto:pokhrelb246@gmail.com"
+                  class="contact__button"
+                >
+                  Write me
+                  <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                </a>
+              </div>
+
+              <div class="contact__card">
+                <i class="bx bxl-linkedin contact__card-icon"></i>
+                <h3 class="contact__card-title">LinkedIn</h3>
+                <span class="contact__card-data">basanta-pokhrel</span>
+                <a
+                  href="https://www.linkedin.com/in/basanta-pokhrel-83abb628b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact__button"
+                >
+                  Write me
+                  <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                </a>
+              </div>
+
+              <div class="contact__card">
+                <i class="bx bxl-github contact__card-icon"></i>
+                <h3 class="contact__card-title">GitHub</h3>
+                <span class="contact__card-data">basanta1-github</span>
+                <a
+                  href="https://github.com/basanta1-github"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact__button"
+                >
+                  View profile
+                  <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__content">
+            <h3 class="contact__title">Write me your project</h3>
+
+            <form class="contact__form" id="contact-form">
+              <div class="contact__form-div">
+                <label class="contact__form-tag">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="contact__form-input"
+                  placeholder="Insert your name"
+                  required
+                />
+              </div>
+              <div class="contact__form-div">
+                <label class="contact__form-tag">Mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="contact__form-input"
+                  placeholder="Insert your email"
+                  required
+                />
+              </div>
+              <div class="contact__form-div contact__form-area">
+                <label class="contact__form-tag">Project</label>
+                <textarea
+                  name="project"
+                  cols="30"
+                  rows="10"
+                  class="contact__form-input"
+                  placeholder="Write your project"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="button button--flex">
+                Send Message
+                <img src="assets/send.svg" alt="" class="button__icon" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer">
+      <div class="footer__container container">
+        <h1 class="footer__title">Basanta</h1>
+
+        <ul class="footer__list">
+          <li><a href="#about" class="footer__link">About</a></li>
+          <li><a href="#portfolio" class="footer__link">Projects</a></li>
+          <li><a href="#contact" class="footer__link">Contact</a></li>
+        </ul>
+
+        <div class="footer__social">
+          <a
+            href="https://www.linkedin.com/in/basanta-pokhrel-83abb628b"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="LinkedIn"
+          >
+            <i class="bx bxl-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/basanta1-github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="GitHub"
+          >
+            <i class="bx bxl-github"></i>
+          </a>
+          <a
+            href="mailto:pokhrelb246@gmail.com"
+            class="footer__social-link"
+            aria-label="Email"
+          >
+            <i class="bx bx-envelope"></i>
+          </a>
+        </div>
+
+        <span class="footer__copy"
+          >&copy; Basanta Pokhrel. All rights reserved</span
+        >
+      </div>
+    </footer>
+
+    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll up">
+      <i class="bx bx-up-arrow-alt scrollup__icon"></i>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
