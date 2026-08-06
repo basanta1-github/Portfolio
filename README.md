@@ -43,6 +43,7 @@ Opening `index.html` directly works for most of the site; the About pixel scatte
 - Floating bottom nav (desktop) / slide-up menu (mobile)
 - About orbit tags keep text upright while rotating on the rings
 - Project filters and flagged completed / evolving / planned work
+- **Page Hunt** mini-game: scroll the site to find packets, eat them with ↑↓ (bombs reset score; score 10 unlocks a surprise)
 
 ## Stack
 

@@ -1308,6 +1308,60 @@
       <i class="bx bx-up-arrow-alt scrollup__icon"></i>
     </a>
 
+    <!--========== PAGE HUNT MINI-GAME ==========-->
+    <div id="page-hunt" class="hunt" hidden>
+      <div class="hunt__hud" aria-live="polite">
+        <div class="hunt__score">
+          Score <strong id="hunt-score">0</strong>
+        </div>
+        <p class="hunt__hint">
+          Scroll to find packets · arrows / WASD · bombs reset
+        </p>
+        <button type="button" class="hunt__stop" id="hunt-stop">Stop</button>
+      </div>
+      <div class="hunt__field" id="hunt-field" aria-hidden="true"></div>
+      <div class="hunt__pad" id="hunt-pad" aria-label="Move controls">
+        <button type="button" class="hunt__pad-btn" data-dir="up" aria-label="Up">↑</button>
+        <button type="button" class="hunt__pad-btn" data-dir="left" aria-label="Left">←</button>
+        <button type="button" class="hunt__pad-btn" data-dir="down" aria-label="Down">↓</button>
+        <button type="button" class="hunt__pad-btn" data-dir="right" aria-label="Right">→</button>
+      </div>
+      <div class="hunt__toast" id="hunt-toast" hidden></div>
+      <div class="hunt__surprise" id="hunt-surprise" hidden>
+        <div class="hunt__surprise-card">
+          <p class="hunt__surprise-kicker">Packet streak unlocked</p>
+          <h2 class="hunt__surprise-title">Surprise!</h2>
+          <p class="hunt__surprise-text">
+            You collected <strong>10</strong> clean packets. Consider this a
+            mini production win — queues drained, no bombs eaten.
+          </p>
+          <button type="button" class="button button--flex" id="hunt-surprise-close">
+            Keep hunting
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="hunt__player"
+      id="hunt-player"
+      hidden
+      aria-hidden="true"
+      title="You"
+    >
+      ⬡
+    </div>
+
+    <button
+      type="button"
+      class="hunt__launch"
+      id="hunt-launch"
+      aria-label="Start page hunt game"
+      title="Page Hunt"
+    >
+      ⬡ Hunt
+    </button>
+
     <script src="script.js"></script>
   </body>
 </html>

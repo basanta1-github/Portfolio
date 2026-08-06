@@ -480,3 +480,391 @@ window.addEventListener("scroll", scrollHeader);
     sourceImg.addEventListener("error", showFallback, { once: true });
   }
 })();
+
+/*=============== PAGE HUNT MINI-GAME ===============*/
+(function initPageHunt() {
+  const root = document.getElementById("page-hunt");
+  const launchBtn = document.getElementById("hunt-launch");
+  const stopBtn = document.getElementById("hunt-stop");
+  const player = document.getElementById("hunt-player");
+  const field = document.getElementById("hunt-field");
+  const scoreEl = document.getElementById("hunt-score");
+  const toast = document.getElementById("hunt-toast");
+  const surprise = document.getElementById("hunt-surprise");
+  const surpriseClose = document.getElementById("hunt-surprise-close");
+  const pad = document.getElementById("hunt-pad");
+  if (!root || !launchBtn || !player || !field || !scoreEl) return;
+
+  const SAFE_ICONS = ["⬢", "◆", "●", "⬡", "✦"];
+  const PLAYER_SIZE = 44;
+  const state = {
+    active: false,
+    score: 0,
+    surprised: false,
+    x: 48,
+    y: window.innerHeight * 0.5,
+    keys: { up: false, down: false, left: false, right: false },
+    bits: [],
+    raf: 0,
+    spawnTimer: 0,
+    lastTs: 0,
+    toastTimer: 0,
+  };
+
+  const isTypingTarget = (el) => {
+    if (!el || !(el instanceof Element)) return false;
+    const tag = el.tagName;
+    return (
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      tag === "SELECT" ||
+      el.isContentEditable
+    );
+  };
+
+  const pageHeight = () =>
+    Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      window.innerHeight * 2
+    );
+
+  const clampPlayer = () => {
+    const maxX = Math.max(0, window.innerWidth - PLAYER_SIZE - 8);
+    const maxY = Math.max(0, window.innerHeight - PLAYER_SIZE - 8);
+    state.x = Math.max(8, Math.min(maxX, state.x));
+    state.y = Math.max(8, Math.min(maxY, state.y));
+  };
+
+  const setPlayerPos = () => {
+    clampPlayer();
+    const scale = player.classList.contains("is-chomp") ? 1.12 : 1;
+    player.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${scale})`;
+  };
+
+  const showToast = (message, kind) => {
+    toast.hidden = false;
+    toast.textContent = message;
+    toast.classList.remove("is-good", "is-bad");
+    if (kind) toast.classList.add(kind);
+    clearTimeout(state.toastTimer);
+    state.toastTimer = setTimeout(() => {
+      toast.hidden = true;
+    }, 1600);
+  };
+
+  const updateScore = () => {
+    scoreEl.textContent = String(state.score);
+  };
+
+  const clearBits = () => {
+    state.bits.forEach((bit) => bit.el.remove());
+    state.bits = [];
+  };
+
+  const spawnBit = () => {
+    if (!state.active) return;
+    const height = pageHeight();
+    const marginX = 72;
+    const x = marginX + Math.random() * Math.max(80, window.innerWidth - marginX * 2);
+    const y = 120 + Math.random() * Math.max(200, height - 240);
+    const isBomb = Math.random() < 0.22;
+    const el = document.createElement("div");
+    el.className = `hunt__bit ${isBomb ? "hunt__bit--bomb" : "hunt__bit--safe"}`;
+    el.textContent = isBomb
+      ? "💣"
+      : SAFE_ICONS[Math.floor(Math.random() * SAFE_ICONS.length)];
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    field.appendChild(el);
+
+    const bit = {
+      el,
+      isBomb,
+      visible: false,
+      born: performance.now(),
+      life: 4200 + Math.random() * 3200,
+      blinkAt: 700 + Math.random() * 900,
+    };
+    state.bits.push(bit);
+
+    requestAnimationFrame(() => {
+      bit.visible = true;
+      el.classList.add("is-visible");
+    });
+  };
+
+  const removeBit = (bit) => {
+    bit.el.classList.remove("is-visible");
+    setTimeout(() => bit.el.remove(), 280);
+    state.bits = state.bits.filter((b) => b !== bit);
+  };
+
+  const overlap = (a, b) => {
+    const padBox = 4;
+    return !(
+      a.right < b.left + padBox ||
+      a.left > b.right - padBox ||
+      a.bottom < b.top + padBox ||
+      a.top > b.bottom - padBox
+    );
+  };
+
+  const fireConfetti = () => {
+    const colors = ["#3b5bdb", "#5c7cfa", "#5eead4", "#ffd43b", "#ff6b6b"];
+    for (let i = 0; i < 48; i += 1) {
+      const piece = document.createElement("span");
+      piece.className = "hunt__confetti";
+      piece.style.left = `${Math.random() * 100}vw`;
+      piece.style.background = colors[i % colors.length];
+      piece.style.animationDuration = `${1.4 + Math.random() * 1.6}s`;
+      piece.style.animationDelay = `${Math.random() * 0.35}s`;
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 3200);
+    }
+  };
+
+  const triggerSurprise = () => {
+    if (state.surprised) return;
+    state.surprised = true;
+    surprise.hidden = false;
+    fireConfetti();
+    document.documentElement.style.setProperty("--accent", "#5eead4");
+    setTimeout(() => {
+      document.documentElement.style.removeProperty("--accent");
+    }, 8000);
+  };
+
+  const eatBit = (bit) => {
+    if (bit.isBomb) {
+      state.score = 0;
+      state.surprised = false;
+      updateScore();
+      showToast("Bomb packet! Score reset to 0", "is-bad");
+      player.classList.add("is-chomp");
+      setPlayerPos();
+      setTimeout(() => {
+        player.classList.remove("is-chomp");
+        setPlayerPos();
+      }, 180);
+      removeBit(bit);
+      return;
+    }
+
+    state.score += 1;
+    updateScore();
+    showToast("+1 packet collected", "is-good");
+    player.classList.add("is-chomp");
+    setPlayerPos();
+    setTimeout(() => {
+      player.classList.remove("is-chomp");
+      setPlayerPos();
+    }, 180);
+    removeBit(bit);
+
+    if (state.score >= 10) {
+      triggerSurprise();
+    }
+  };
+
+  const setKey = (dir, pressed) => {
+    if (!state.keys.hasOwnProperty(dir)) return;
+    state.keys[dir] = pressed;
+    if (!pad) return;
+    const btn = pad.querySelector(`[data-dir="${dir}"]`);
+    if (btn) btn.classList.toggle("is-active", pressed);
+  };
+
+  const dirFromEvent = (e) => {
+    const key = e.key;
+    const code = e.code;
+    if (key === "ArrowUp" || code === "ArrowUp" || key === "w" || key === "W") {
+      return "up";
+    }
+    if (key === "ArrowDown" || code === "ArrowDown" || key === "s" || key === "S") {
+      return "down";
+    }
+    if (key === "ArrowLeft" || code === "ArrowLeft" || key === "a" || key === "A") {
+      return "left";
+    }
+    if (
+      key === "ArrowRight" ||
+      code === "ArrowRight" ||
+      key === "d" ||
+      key === "D"
+    ) {
+      return "right";
+    }
+    return null;
+  };
+
+  const tick = (ts) => {
+    if (!state.active) return;
+    if (!state.lastTs) state.lastTs = ts;
+    const dt = Math.min(0.05, (ts - state.lastTs) / 1000);
+    state.lastTs = ts;
+
+    const speed = 320; // px per second
+    if (state.keys.up) state.y -= speed * dt;
+    if (state.keys.down) state.y += speed * dt;
+    if (state.keys.left) state.x -= speed * dt;
+    if (state.keys.right) state.x += speed * dt;
+    setPlayerPos();
+
+    field.style.height = `${pageHeight()}px`;
+
+    const now = performance.now();
+    if (now - state.spawnTimer > 1600 && state.bits.length < 8) {
+      state.spawnTimer = now;
+      spawnBit();
+    }
+
+    const playerBox = player.getBoundingClientRect();
+    state.bits.slice().forEach((bit) => {
+      const age = now - bit.born;
+      if (age > bit.life) {
+        removeBit(bit);
+        return;
+      }
+      if (age > bit.life - 700) {
+        bit.el.classList.remove("is-visible");
+      } else if (age > bit.blinkAt && !bit.visible) {
+        bit.visible = true;
+        bit.el.classList.add("is-visible");
+      }
+
+      if (!bit.el.classList.contains("is-visible")) return;
+      const box = bit.el.getBoundingClientRect();
+      if (box.bottom < 0 || box.top > window.innerHeight) return;
+      if (overlap(playerBox, box)) eatBit(bit);
+    });
+
+    state.raf = requestAnimationFrame(tick);
+  };
+
+  const startGame = () => {
+    state.active = true;
+    state.score = 0;
+    state.surprised = false;
+    state.x = 48;
+    state.y = window.innerHeight * 0.45;
+    state.lastTs = 0;
+    state.spawnTimer = 0;
+    Object.keys(state.keys).forEach((k) => setKey(k, false));
+    updateScore();
+    clearBits();
+    root.hidden = false;
+    player.hidden = false;
+    launchBtn.classList.add("is-hidden");
+    surprise.hidden = true;
+    toast.hidden = true;
+    field.style.height = `${pageHeight()}px`;
+    setPlayerPos();
+    spawnBit();
+    spawnBit();
+    state.raf = requestAnimationFrame(tick);
+    showToast("Move with ←↑↓→ or WASD / pad", "is-good");
+  };
+
+  const stopGame = () => {
+    state.active = false;
+    cancelAnimationFrame(state.raf);
+    clearBits();
+    root.hidden = true;
+    player.hidden = true;
+    launchBtn.classList.remove("is-hidden");
+    surprise.hidden = true;
+    toast.hidden = true;
+    Object.keys(state.keys).forEach((k) => setKey(k, false));
+  };
+
+  launchBtn.addEventListener("click", startGame);
+  stopBtn.addEventListener("click", stopGame);
+  surpriseClose.addEventListener("click", () => {
+    surprise.hidden = true;
+  });
+
+  const onKeyDown = (e) => {
+    if (isTypingTarget(e.target)) return;
+
+    if ((e.key === "h" || e.key === "H") && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      e.preventDefault();
+      if (state.active) stopGame();
+      else startGame();
+      return;
+    }
+
+    if (!state.active) return;
+    const dir = dirFromEvent(e);
+    if (dir) {
+      e.preventDefault();
+      e.stopPropagation();
+      setKey(dir, true);
+      return;
+    }
+    if (e.key === "Escape") {
+      e.preventDefault();
+      stopGame();
+    }
+  };
+
+  const onKeyUp = (e) => {
+    const dir = dirFromEvent(e);
+    if (dir) {
+      e.preventDefault();
+      setKey(dir, false);
+    }
+  };
+
+  window.addEventListener("keydown", onKeyDown, true);
+  window.addEventListener("keyup", onKeyUp, true);
+
+  if (pad) {
+    const press = (dir, pressed) => {
+      if (!state.active) return;
+      setKey(dir, pressed);
+    };
+    pad.querySelectorAll(".hunt__pad-btn").forEach((btn) => {
+      const dir = btn.getAttribute("data-dir");
+      btn.addEventListener("pointerdown", (e) => {
+        e.preventDefault();
+        btn.setPointerCapture(e.pointerId);
+        press(dir, true);
+      });
+      btn.addEventListener("pointerup", () => press(dir, false));
+      btn.addEventListener("pointercancel", () => press(dir, false));
+      btn.addEventListener("pointerleave", () => press(dir, false));
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    if (state.active) setPlayerPos();
+  });
+
+  // Drag eater only when grabbing near it (so page scroll still works)
+  let dragging = false;
+  player.style.touchAction = "none";
+  window.addEventListener("pointerdown", (e) => {
+    if (!state.active) return;
+    if (e.target.closest && e.target.closest(".hunt__pad")) return;
+    if (e.target.closest && e.target.closest(".hunt__hud")) return;
+    if (e.target.closest && e.target.closest(".hunt__surprise")) return;
+    if (e.target.closest && e.target.closest("a, button, input, textarea")) return;
+    const dx = e.clientX - (state.x + PLAYER_SIZE / 2);
+    const dy = e.clientY - (state.y + PLAYER_SIZE / 2);
+    if (Math.hypot(dx, dy) > 56) return;
+    dragging = true;
+    state.x = e.clientX - PLAYER_SIZE / 2;
+    state.y = e.clientY - PLAYER_SIZE / 2;
+    setPlayerPos();
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!state.active || !dragging) return;
+    state.x = e.clientX - PLAYER_SIZE / 2;
+    state.y = e.clientY - PLAYER_SIZE / 2;
+    setPlayerPos();
+  });
+  window.addEventListener("pointerup", () => {
+    dragging = false;
+  });
+})();
