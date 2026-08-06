@@ -301,7 +301,7 @@ html.dark-theme .button img.button__icon {
 
 .nav__link:hover,
 .nav__link.active-link {
-  color: var(--title-color-dark);
+  color: var(--accent);
 }
 
 .nav__icon {
@@ -315,10 +315,6 @@ html.dark-theme .button img.button__icon {
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--title-color);
-}
-
-.nav__close:hover {
-  color: var(--title-color-dark);
 }
 
 .show-menu {
@@ -338,9 +334,9 @@ html.dark-theme .button img.button__icon {
   font-family: var(--body-font);
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
-  color: var(--title-color);
+  color: var(--accent);
   background-color: var(--container-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--accent-muted);
   border-radius: 2rem;
   padding: 0.45rem 0.85rem;
   cursor: pointer;
@@ -368,8 +364,13 @@ html.dark-theme .change-theme .theme-label-day {
 }
 
 .change-theme:hover {
-  color: var(--title-color-dark);
-  border-color: var(--title-color);
+  color: var(--accent-hover);
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+.nav__close:hover {
+  color: var(--accent);
 }
 
 .scroll-header {
@@ -1444,10 +1445,19 @@ html.dark-theme .change-theme .theme-label-day {
 
 /*=============== CONTACT ===============*/
 .contact__container {
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: minmax(0, 280px) minmax(0, 420px);
   justify-content: center;
-  column-gap: 6rem;
+  justify-items: center;
+  column-gap: 3.5rem;
   padding-bottom: 3rem;
+  align-items: start;
+}
+
+.contact__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact__title {
@@ -1455,14 +1465,15 @@ html.dark-theme .change-theme .theme-label-day {
   font-size: var(--h3-font-size);
   font-weight: var(--font-medium);
   margin-bottom: var(--mb-1-5);
+  width: 100%;
 }
 
 .contact__info {
   display: grid;
   row-gap: 1rem;
-  grid-template-columns: minmax(0, 300px);
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
-  max-width: 300px;
+  max-width: 260px;
 }
 
 .contact__card {
@@ -1514,8 +1525,9 @@ html.dark-theme .change-theme .theme-label-day {
 }
 
 .contact__form {
-  width: min(360px, 100%);
-  max-width: 100%;
+  width: 100%;
+  max-width: 420px;
+  min-width: 0;
 }
 
 .contact__form-div {
@@ -2107,19 +2119,24 @@ html.dark-theme .hunt__bit--bomb {
   .contact__container {
     grid-template-columns: 1fr;
     row-gap: 2.5rem;
+    justify-content: center;
     justify-items: center;
     column-gap: 0;
   }
 
-  .contact__info,
-  .contact__form {
+  .contact__content {
     width: min(420px, 100%);
-    max-width: 100%;
   }
 
   .contact__info {
+    width: 100%;
+    max-width: 260px;
     grid-template-columns: minmax(0, 1fr);
-    max-width: none;
+  }
+
+  .contact__form {
+    width: 100%;
+    max-width: 420px;
   }
 
   .pin-card {
@@ -2293,6 +2310,12 @@ html.dark-theme .hunt__bit--bomb {
     grid-template-columns: 1fr;
     row-gap: 2.5rem;
     padding-bottom: 2rem;
+    justify-items: center;
+  }
+
+  .contact__content {
+    width: 100%;
+    max-width: 420px;
   }
 
   .contact__info,
